@@ -18,7 +18,7 @@ class _AdminappoimentState extends State<Adminappoiment> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Provider.of<AppoimentProvider>(context, listen: false).getallAppoiment();
+    Provider.of<AppoimentProvider>(context, listen: false).getAllAppoiment();
   }
 
   @override

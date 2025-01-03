@@ -1,43 +1,42 @@
-import 'dart:developer';
 
+import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctor_app/model/Appoiment/appoiment.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 class Appoimentservices {
   CollectionReference refere =
       FirebaseFirestore.instance.collection('SlotBooking');
   FirebaseAuth firebaseStores = FirebaseAuth.instance;
-
-  Future addData() async {
-    try {
-      var a = firebaseStores.currentUser;
-      log(a.toString());
-    } catch (e) {
-      log('error');
-    }
-  }
-
   Future addAppoiment(AppoimentForUser model) async {
     try {
-      await refere.add(model.toFireStore());
-      addData();
-      log('Appoiment saved');
+      var currentUser = firebaseStores.currentUser;
+      if (currentUser != null) {
+        model.userId = currentUser.uid; 
+        await refere
+            .add(model.toFireStore()); 
+        log('Appointment saved for user: ${currentUser.uid}');
+      } else {
+        log('No user is currently logged in');
+      }
     } on FirebaseException catch (e) {
-      log('error in adding appoinment ${e.message}---${e}');
+      log('Error in adding appointment: ${e.message}---${e}');
     }
   }
-
-  Future<List<AppoimentForUser>> getAllAppoiment() async {
+  Future<List<AppoimentForUser>> getAllAppoiment(
+      {required String userId}) async {
     try {
-      final QuerySnapshot datas = await refere.get();
-      log(' get all appoiment succes  $datas');
+      final QuerySnapshot datas = await refere
+          .where('userId', isEqualTo: userId)
+          .get();
+
+      log('Appointments retrieved for user: $userId');
+
       return datas.docs
           .map((e) =>
               AppoimentForUser.fromFireStore(e.data() as Map<String, dynamic>))
           .toList();
     } on FirebaseException catch (e) {
-      log('error to get all appoiment ${e.message}--$e');
+      log('Error in getting appointments: ${e.message}---$e');
     }
     return [];
   }

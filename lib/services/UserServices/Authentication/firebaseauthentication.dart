@@ -2,38 +2,41 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctor_app/model/authmodel/auth.dart';
-import 'package:doctor_app/model/userDetails/userdetailsmodel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class Firebaseauthentication {
   FirebaseAuth firebaseStores = FirebaseAuth.instance;
   final firebaseData = FirebaseFirestore.instance;
-  final username = '';
+  final String username = '';
 
   Future register(
       {required Userdetailsmodels model,
       required String emails,
-      required password,
+      required String password,
       required String username,
       required String phonenumber}) async {
     try {
-      var curruentUser = firebaseStores.currentUser;
+      UserCredential userCredential = await firebaseStores
+          .createUserWithEmailAndPassword(email: emails, password: password);
 
-      if (curruentUser != null) {
-        model.uid;
+      var currentUser = userCredential.user;
+
+      if (currentUser != null) {
+        model.uid = currentUser.uid;
+
+        await firebaseData
+            .collection('Users')
+            .doc(currentUser.uid)
+            .set(model.toFireStore());
+
+        await verifyEmail();
+
+        log('Registration successful');
+      } else {
+        log('No current user found after registration');
       }
-      await firebaseData
-          .collection('Users')
-          .doc(curruentUser?.uid)
-          .set(model.toFireStore());
-      await firebaseStores.createUserWithEmailAndPassword(
-          email: emails, password: password);
-      await verifyEmail();
-      username = username;
-
-      log('auth succes');
     } on FirebaseAuthException catch (e) {
-      log('error to register $e');
+      log('Error during registration: $e');
       log(e.message.toString());
     }
   }
@@ -42,18 +45,18 @@ class Firebaseauthentication {
     try {
       await firebaseStores.signInWithEmailAndPassword(
           email: emails, password: password);
-      log('login Succes');
+      log('Login successful');
     } on FirebaseAuthException catch (e) {
-      log('error in login $e');
+      log('Error in login: $e');
     }
   }
 
   Future verifyEmail() async {
     try {
       await firebaseStores.currentUser?.sendEmailVerification();
-      log('verification mail send');
+      log('Verification email sent');
     } on FirebaseAuthException catch (e) {
-      log('errror to send verification $e');
+      log('Error sending verification email: $e');
     }
   }
 }
