@@ -1,7 +1,7 @@
 import 'package:doctor_app/utils/colors/colors.dart';
-import 'package:doctor_app/view/UserSide/DoctorPage/doctorpage.dart';
-import 'package:doctor_app/view/UserSide/HomePage/homepage.dart';
-import 'package:doctor_app/view/UserSide/MyAppoiment/appoinmentpage.dart';
+import 'package:doctor_app/view/User/DoctorPage/doctorpage.dart';
+import 'package:doctor_app/view/User/HomePage/homepage.dart';
+import 'package:doctor_app/view/User/MyAppoiment/appoinmentpage.dart';
 import 'package:doctor_app/view_model/bottombart.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';

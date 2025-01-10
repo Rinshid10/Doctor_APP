@@ -1,11 +1,10 @@
-import 'dart:developer';
-
 import 'package:doctor_app/model/Appoiment/appoiment.dart';
 import 'package:doctor_app/services/UserServices/AppoimentServices/appoimentservices.dart';
 import 'package:doctor_app/utils/colors/colors.dart';
-import 'package:doctor_app/view/UserSide/AppoimentRetister/widget.dart';
-import 'package:doctor_app/view/UserSide/bottomNavigationbar/bottombar.dart';
-import 'package:doctor_app/view/UserSide/widgets/ReUse/widgets.dart';
+import 'package:doctor_app/view/User/AppoimentRetister/widget.dart';
+import 'package:doctor_app/view/User/bottomNavigationbar/bottombar.dart';
+
+import 'package:doctor_app/view/User/widgets/ReUse/widgets.dart';
 import 'package:doctor_app/view_model/appoiment.dart';
 import 'package:doctor_app/view_model/datepicker.dart';
 import 'package:flutter/material.dart';

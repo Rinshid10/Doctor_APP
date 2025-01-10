@@ -1,6 +1,6 @@
 import 'package:doctor_app/utils/colors/colors.dart';
 import 'package:doctor_app/view/Admin/view_model/userdetailsprovider.dart';
-import 'package:doctor_app/view/UserSide/widgets/ReUse/widgets.dart';
+import 'package:doctor_app/view/User/widgets/ReUse/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';

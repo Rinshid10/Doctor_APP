@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:doctor_app/utils/colors/colors.dart';
-import 'package:doctor_app/view/UserSide/widgets/ReUse/widgets.dart';
+import 'package:doctor_app/view/User/widgets/ReUse/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

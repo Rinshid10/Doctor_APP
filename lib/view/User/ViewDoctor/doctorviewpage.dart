@@ -1,7 +1,7 @@
 import 'package:doctor_app/utils/colors/colors.dart';
-import 'package:doctor_app/view/UserSide/AppoimentRetister/appoinmentRegester.dart';
-import 'package:doctor_app/view/UserSide/ViewDoctor/widget.dart';
-import 'package:doctor_app/view/UserSide/widgets/ReUse/widgets.dart';
+import 'package:doctor_app/view/User/AppoimentRetister/appoinmentRegester.dart';
+import 'package:doctor_app/view/User/ViewDoctor/widget.dart';
+import 'package:doctor_app/view/User/widgets/ReUse/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';

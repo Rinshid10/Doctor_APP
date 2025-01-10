@@ -1,7 +1,7 @@
 import 'package:doctor_app/model/AddDoctors/adddoctors.dart';
 import 'package:doctor_app/utils/colors/colors.dart';
-import 'package:doctor_app/view/UserSide/ViewDoctor/doctorviewpage.dart';
-import 'package:doctor_app/view/UserSide/widgets/ReUse/widgets.dart';
+import 'package:doctor_app/view/User/ViewDoctor/doctorviewpage.dart';
+import 'package:doctor_app/view/User/widgets/ReUse/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

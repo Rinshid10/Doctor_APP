@@ -1,9 +1,8 @@
 import 'dart:developer';
 
 import 'package:doctor_app/model/authmodel/auth.dart';
-import 'package:doctor_app/model/userDetails/userdetailsmodel.dart';
 import 'package:doctor_app/services/UserServices/Authentication/firebaseauthentication.dart';
-import 'package:doctor_app/view/UserSide/bottomNavigationbar/bottombar.dart';
+import 'package:doctor_app/view/User/bottomNavigationbar/bottombar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -14,6 +13,18 @@ class Authenticationpovider extends ChangeNotifier {
   TextEditingController username = TextEditingController();
   TextEditingController phonenumber = TextEditingController();
   String usernameOFuser = '';
+  List<bool> isveryfied = [];
+  List<bool> isNotVeryfied = [];
+
+  isEMail() async {
+    try {
+      isNotVeryfied = ser.ifFalse;
+      isveryfied = ser.ifTrue;
+      log(' length of isnotverified ${isNotVeryfied.length}  length of isVerified ${isveryfied.length}');
+    } catch (e) {
+      log('$e');
+    }
+  }
 
   void register(BuildContext context) async {
     var now = DateTime.now();
@@ -45,8 +56,11 @@ class Authenticationpovider extends ChangeNotifier {
     }
   }
 
-  void login({required String emails, required String password}) async {
-    await ser.login(emails: emails, password: password);
+  void login(
+      {required String emails,
+      required String password,
+      required BuildContext context}) async {
+    await ser.login(emails: emails, password: password, context: context);
     notifyListeners();
   }
 }

@@ -2,9 +2,9 @@ import 'dart:developer';
 
 import 'package:doctor_app/utils/colors/colors.dart';
 import 'package:doctor_app/view/Admin/AdminHomepage/adminhomepage.dart';
-import 'package:doctor_app/view/UserSide/loginAndSignUP/RegisterPage/registerpage.dart';
-import 'package:doctor_app/view/UserSide/loginAndSignUP/RegisterPage/widgets/registerwidgets.dart';
-import 'package:doctor_app/view/UserSide/widgets/ReUse/widgets.dart';
+import 'package:doctor_app/view/User/loginAndSignUP/RegisterPage/registerpage.dart';
+import 'package:doctor_app/view/User/loginAndSignUP/RegisterPage/widgets/registerwidgets.dart';
+import 'package:doctor_app/view/User/widgets/ReUse/widgets.dart';
 import 'package:doctor_app/view_model/adminlogin.dart';
 import 'package:doctor_app/view_model/authenticationpovider.dart';
 import 'package:flutter/material.dart';

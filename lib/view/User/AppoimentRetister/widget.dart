@@ -1,5 +1,6 @@
 import 'package:doctor_app/utils/colors/colors.dart';
-import 'package:doctor_app/view/UserSide/widgets/ReUse/widgets.dart';
+import 'package:doctor_app/view/User/widgets/ReUse/widgets.dart';
+import 'package:doctor_app/view/User/widgets/ReUse/widgets.dart';
 import 'package:flutter/material.dart';
 
 // Widget slotContainer(BuildContext context, String slot, String? selectedSlot,

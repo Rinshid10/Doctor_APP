@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:doctor_app/view/UserSide/HomePage/homepage.dart';
-import 'package:doctor_app/view/UserSide/bottomNavigationbar/bottombar.dart';
-import 'package:doctor_app/view/UserSide/loginAndSignUP/LoginPage/loginpage.dart';
+import 'package:doctor_app/view/User/HomePage/homepage.dart';
+import 'package:doctor_app/view/User/bottomNavigationbar/bottombar.dart';
+import 'package:doctor_app/view/User/loginAndSignUP/LoginPage/loginpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

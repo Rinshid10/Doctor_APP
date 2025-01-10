@@ -1,6 +1,6 @@
 import 'package:doctor_app/utils/colors/colors.dart';
-import 'package:doctor_app/view/UserSide/MyAppoiment/widget.dart';
-import 'package:doctor_app/view/UserSide/widgets/ReUse/widgets.dart';
+import 'package:doctor_app/view/User/MyAppoiment/widget.dart';
+import 'package:doctor_app/view/User/widgets/ReUse/widgets.dart';
 import 'package:doctor_app/view_model/appoiment.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -18,7 +18,7 @@ class _AdminappoimentState extends State<Adminappoiment> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Provider.of<AppoimentProvider>(context, listen: false).getAllAppoiment();
+    Provider.of<AppoimentProvider>(context, listen: false).adminappoimentGet();
   }
 
   @override
@@ -39,9 +39,9 @@ class _AdminappoimentState extends State<Adminappoiment> {
         builder: (context, value, child) => Padding(
           padding: const EdgeInsets.only(left: 5, right: 5),
           child: ListView.builder(
-            itemCount: value.listOfAppoiment.length,
+            itemCount: value.listOfAppoimentFOrAdmin.length,
             itemBuilder: (context, index) {
-              final datas = value.listOfAppoiment[index];
+              final datas = value.listOfAppoimentFOrAdmin[index];
               return Padding(
                 padding: const EdgeInsets.all(10),
                 child: Container(

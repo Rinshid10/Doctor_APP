@@ -1,7 +1,7 @@
 import 'package:doctor_app/utils/colors/colors.dart';
-import 'package:doctor_app/view/UserSide/loginAndSignUP/RegisterPage/registerpage.dart';
-import 'package:doctor_app/view/UserSide/loginAndSignUP/RegisterPage/widgets/registerwidgets.dart';
-import 'package:doctor_app/view/UserSide/widgets/ReUse/widgets.dart';
+import 'package:doctor_app/view/User/loginAndSignUP/RegisterPage/registerpage.dart';
+import 'package:doctor_app/view/User/loginAndSignUP/RegisterPage/widgets/registerwidgets.dart';
+import 'package:doctor_app/view/User/widgets/ReUse/widgets.dart';
 import 'package:doctor_app/view_model/authenticationpovider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -59,7 +59,9 @@ class Loginpage extends StatelessWidget {
                             colors: ColorsConstents.buttonColors)),
                     eleButuonForLR(
                       voidfuc: () => value.login(
-                          emails: email.text, password: password.text),
+                          context: context,
+                          emails: email.text,
+                          password: password.text),
                     )
                   ],
                 )
