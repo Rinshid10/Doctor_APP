@@ -3,6 +3,7 @@ import 'package:doctor_app/view/User/loginAndSignUP/RegisterPage/registerpage.da
 import 'package:doctor_app/view/User/loginAndSignUP/RegisterPage/widgets/registerwidgets.dart';
 import 'package:doctor_app/view/User/widgets/ReUse/widgets.dart';
 import 'package:doctor_app/view_model/authenticationpovider.dart';
+import 'package:doctor_app/view_model/otherprovider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
@@ -15,8 +16,8 @@ class Loginpage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Consumer<Authenticationpovider>(
-        builder: (context, value, child) => SafeArea(
+      body: Consumer2<Authenticationpovider, Otherprovider>(
+        builder: (context, value, val2, child) => SafeArea(
           child: Padding(
             padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
             child: Column(
@@ -48,9 +49,16 @@ class Loginpage extends StatelessWidget {
                   spacing: 20,
                   children: [
                     textfieldsInRegister(
-                        hintText: "Email*", controllers: email),
-                    textfieldsInRegister(
-                        hintText: "Password", controllers: password),
+                        prifixIcon: Icons.email,
+                        hintText: "Email*",
+                        controllers: email),
+                    textfieldsInRegisterOb(
+                        suffixIcon: val2.boolIcons,
+                        password: () => val2.isBoolInPassword(),
+                        obsd: val2.istrue,
+                        prifixIcon: Icons.lock,
+                        hintText: "Password*",
+                        controllers: password),
                     TextButton(
                         onPressed: () {},
                         child: textDemo(

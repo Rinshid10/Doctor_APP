@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctor_app/view/Admin/AdminHomepage/adminhomepage.dart';
+import 'package:doctor_app/view/Admin/AdminLoogin/adminuserpage.dart';
+import 'package:doctor_app/view_model/adminlogin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -11,12 +13,20 @@ class AdminloginServices {
       FirebaseFirestore.instance.collection('AdminDetails');
   bool adminLoginss = false;
 
-  Future adminISlOginOrNot() async {
+  Future adminISlOginOrNot(BuildContext context) async {
     try {
       User? user = FirebaseAuth.instance.currentUser;
       if (user != null) {
         log('user logined');
+        Navigator.pushReplacement(
+            // ignore: use_build_context_synchronously
+            context,
+            MaterialPageRoute(builder: (context) => Adminhomepage()));
       } else {
+        Navigator.pushReplacement(
+            // ignore: use_build_context_synchronously
+            context,
+            MaterialPageRoute(builder: (context) => AdminLoginPage()));
         log('user didint login');
       }
     } catch (e) {

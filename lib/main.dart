@@ -1,7 +1,9 @@
 import 'package:doctor_app/view/Admin/AdminHomepage/adminhomepage.dart';
+import 'package:doctor_app/view/Admin/AdminLoogin/adminuserpage.dart';
 import 'package:doctor_app/view/Admin/Pichartes/AppoimentPiechart/appoimentpie.dart';
 import 'package:doctor_app/view/Admin/view_model/dropdown.dart';
 import 'package:doctor_app/view/Admin/view_model/userdetailsprovider.dart';
+import 'package:doctor_app/view/User/AdminOrUser/adminoruser.dart';
 
 import 'package:doctor_app/view/User/loginAndSignUP/LoginPage/loginpage.dart';
 import 'package:doctor_app/view_model/addDcProvider.dart';
@@ -10,7 +12,7 @@ import 'package:doctor_app/view_model/appoiment.dart';
 import 'package:doctor_app/view_model/authenticationpovider.dart';
 import 'package:doctor_app/view_model/bottombart.dart';
 import 'package:doctor_app/view_model/datepicker.dart';
-import 'package:doctor_app/view_model/piechartAPpoiment.dart';
+import 'package:doctor_app/view_model/otherprovider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -52,9 +54,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => Adminlogin(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => Otherprovider(),
+        ),
       ],
       child: MaterialApp(
-        home: Adminhomepage(),
+        home: Adminoruser(),
       ),
     );
   }

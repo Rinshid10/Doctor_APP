@@ -12,6 +12,7 @@ import 'package:gap/gap.dart';
 
 import 'package:provider/provider.dart';
 
+// ignore: must_be_immutable
 class AppoinmentRegister extends StatelessWidget {
   String? doctorName;
   String? specialist;

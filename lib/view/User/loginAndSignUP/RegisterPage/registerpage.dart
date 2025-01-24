@@ -2,6 +2,7 @@ import 'package:doctor_app/utils/colors/colors.dart';
 import 'package:doctor_app/view/User/loginAndSignUP/RegisterPage/widgets/registerwidgets.dart';
 import 'package:doctor_app/view/User/widgets/ReUse/widgets.dart';
 import 'package:doctor_app/view_model/authenticationpovider.dart';
+import 'package:doctor_app/view_model/otherprovider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
@@ -11,8 +12,9 @@ class Registerpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<Authenticationpovider>(
-      builder: (context, value, child) => Scaffold(
+    return Consumer2<Authenticationpovider, Otherprovider>(
+      builder: (context, value, val2, child) => Scaffold(
+        backgroundColor: ColorsConstents.backGroundColor,
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
@@ -41,20 +43,41 @@ class Registerpage extends StatelessWidget {
                   spacing: 20,
                   children: [
                     textfieldsInRegister(
-                        hintText: "Username*", controllers: value.username),
+                        prifixIcon: Icons.person,
+                        hintText: "Username*",
+                        controllers: value.username),
                     textfieldsInRegister(
-                        hintText: "Email*", controllers: value.email),
+                        prifixIcon: Icons.email,
+                        hintText: "Email*",
+                        controllers: value.email),
                     textfieldsInRegister(
+                        prifixIcon: Icons.phone,
                         controllers: value.phonenumber,
                         hintText: "Phone Number*",
                         keyboardType: TextInputType.number),
-                    textfieldsInRegister(
-                        hintText: "Password", controllers: value.password),
-                    eleButuonFoR(
-                        text: 'Register',
-                        voids: () {
-                          value.register(context);
-                        })
+                    textfieldsInRegisterOb(
+                        suffixIcon: val2.boolIcons,
+                        password: () => val2.isBoolInPassword(),
+                        obsd: val2.istrue,
+                        prifixIcon: Icons.lock,
+                        hintText: "Password*",
+                        controllers: value.password),
+                    Column(
+                      children: [
+                        eleButuonFoR(
+                            text: 'Register',
+                            voids: () {
+                              value.register(context);
+                            }),
+                        Gap(10),
+                        textDemo(
+                            text: 'Or',
+                            fontwight: FontWeight.bold,
+                            fontsized: 15),
+                        Gap(10),
+                        containerGoogle()
+                      ],
+                    )
                   ],
                 )
               ],

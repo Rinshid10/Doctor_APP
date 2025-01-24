@@ -1,5 +1,6 @@
 import 'package:doctor_app/utils/colors/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 Widget textDemo(
     {required String text,
@@ -12,7 +13,7 @@ Widget textDemo(
   );
 }
 
-Widget eleButuonForLR({
+Widget eleButuonForLR({ 
   VoidCallback? voidfuc,
 }) {
   return ElevatedButton(
@@ -27,7 +28,6 @@ Widget eleButuonForLR({
           fontwight: FontWeight.bold,
           colors: ColorsConstents.textWhiteColor));
 }
-
 Widget eleButuonFoR({
   required VoidCallback voids,
   required String text,
@@ -39,7 +39,7 @@ Widget eleButuonFoR({
           backgroundColor: ColorsConstents.buttonColors),
       onPressed: voids,
       child: textDemo(
-          text: text,
+          text: text,     
           fontsized: 20,
           fontwight: FontWeight.bold,
           colors: ColorsConstents.textWhiteColor));
@@ -53,4 +53,29 @@ Widget eleButuon({VoidCallback? voidfuc, required child}) {
           backgroundColor: ColorsConstents.buttonColors),
       onPressed: voidfuc,
       child: child);
+}
+       
+
+Widget containerGoogle() {
+  return Container(
+    height: 50,
+    width: double.infinity,
+    decoration: BoxDecoration(                                                                    
+        border: Border.all(color: ColorsConstents.buttonColors),
+        color: ColorsConstents.backGroundColor,
+        borderRadius: BorderRadius.circular(5)),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          height: double.infinity,
+          width: 50,
+          color: Colors.red,
+        ),
+        Gap(15),
+        textDemo(
+            text: 'Sign with Google', fontsized: 18, fontwight: FontWeight.bold)
+      ],
+    ),
+  );
 }

@@ -9,10 +9,7 @@ class Adminlogin extends ChangeNotifier {
 
   adminAlredyLogin(BuildContext context) async {
     try {
-      await ser.adminISlOginOrNot();
-
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Adminhomepage()));
+      await ser.adminISlOginOrNot(context);
     } catch (e) {
       log('$e');
     }
