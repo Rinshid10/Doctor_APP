@@ -13,7 +13,7 @@ Widget textDemo(
   );
 }
 
-Widget eleButuonForLR({ 
+Widget eleButuonForLR({
   VoidCallback? voidfuc,
 }) {
   return ElevatedButton(
@@ -28,6 +28,7 @@ Widget eleButuonForLR({
           fontwight: FontWeight.bold,
           colors: ColorsConstents.textWhiteColor));
 }
+
 Widget eleButuonFoR({
   required VoidCallback voids,
   required String text,
@@ -39,7 +40,7 @@ Widget eleButuonFoR({
           backgroundColor: ColorsConstents.buttonColors),
       onPressed: voids,
       child: textDemo(
-          text: text,     
+          text: text,
           fontsized: 20,
           fontwight: FontWeight.bold,
           colors: ColorsConstents.textWhiteColor));
@@ -54,13 +55,12 @@ Widget eleButuon({VoidCallback? voidfuc, required child}) {
       onPressed: voidfuc,
       child: child);
 }
-       
 
 Widget containerGoogle() {
   return Container(
     height: 50,
     width: double.infinity,
-    decoration: BoxDecoration(                                                                    
+    decoration: BoxDecoration(
         border: Border.all(color: ColorsConstents.buttonColors),
         color: ColorsConstents.backGroundColor,
         borderRadius: BorderRadius.circular(5)),

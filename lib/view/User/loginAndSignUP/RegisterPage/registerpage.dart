@@ -18,69 +18,76 @@ class Registerpage extends StatelessWidget {
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                textDemo(
-                    text: 'Sign Up', fontsized: 30, fontwight: FontWeight.bold),
-                Gap(5),
-                Row(
-                  children: [
-                    textDemo(text: 'Already have a account?', fontsized: 20),
-                    TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: textDemo(
-                            text: 'Login',
-                            fontsized: 20,
-                            fontwight: FontWeight.bold,
-                            colors: ColorsConstents.textBlueColor)),
-                  ],
-                ),
-                Gap(30),
-                Column(
-                  spacing: 20,
-                  children: [
-                    textfieldsInRegister(
-                        prifixIcon: Icons.person,
-                        hintText: "Username*",
-                        controllers: value.username),
-                    textfieldsInRegister(
-                        prifixIcon: Icons.email,
-                        hintText: "Email*",
-                        controllers: value.email),
-                    textfieldsInRegister(
-                        prifixIcon: Icons.phone,
-                        controllers: value.phonenumber,
-                        hintText: "Phone Number*",
-                        keyboardType: TextInputType.number),
-                    textfieldsInRegisterOb(
-                        suffixIcon: val2.boolIcons,
-                        password: () => val2.isBoolInPassword(),
-                        obsd: val2.istrue,
-                        prifixIcon: Icons.lock,
-                        hintText: "Password*",
-                        controllers: value.password),
-                    Column(
-                      children: [
-                        eleButuonFoR(
-                            text: 'Register',
-                            voids: () {
-                              value.register(context);
-                            }),
-                        Gap(10),
-                        textDemo(
-                            text: 'Or',
-                            fontwight: FontWeight.bold,
-                            fontsized: 15),
-                        Gap(10),
-                        containerGoogle()
-                      ],
-                    )
-                  ],
-                )
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  textDemo(
+                      text: 'Sign Up',
+                      fontsized: 30,
+                      fontwight: FontWeight.bold),
+                  Gap(5),
+                  Row(
+                    children: [
+                      textDemo(text: 'Already have a account?', fontsized: 20),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: textDemo(
+                              text: 'Login',
+                              fontsized: 20,
+                              fontwight: FontWeight.bold,
+                              colors: ColorsConstents.textBlueColor)),
+                    ],
+                  ),
+                  Gap(30),
+                  Column(
+                    spacing: 20,
+                    children: [
+                      textfieldsInRegister(
+                          prifixIcon: Icons.person,
+                          hintText: "Username*",
+                          controllers: value.username),
+                      textfieldsInRegister(
+                          prifixIcon: Icons.email,
+                          hintText: "Email*",
+                          controllers: value.email),
+                      textfieldsInRegister(
+                          prifixIcon: Icons.phone,
+                          controllers: value.phonenumber,
+                          hintText: "Phone Number*",
+                          keyboardType: TextInputType.number),
+                      textfieldsInRegisterOb(
+                          suffixIcon: val2.boolIcons,
+                          password: () => val2.isBoolInPassword(),
+                          obsd: val2.istrue,
+                          prifixIcon: Icons.lock,
+                          hintText: "Password*",
+                          controllers: value.password),
+                      Column(
+                        children: [
+                          Hero(
+                            tag: "Login",
+                            child: eleButuonFoR(
+                                text: 'Register',
+                                voids: () {
+                                  value.register(context);
+                                }),
+                          ),
+                          Gap(10),
+                          textDemo(
+                              text: 'Or',
+                              fontwight: FontWeight.bold,
+                              fontsized: 15),
+                          Gap(10),
+                          containerGoogle()
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),

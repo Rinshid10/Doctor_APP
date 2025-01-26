@@ -1,18 +1,24 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:doctor_app/model/AddDoctors/adddoctors.dart';
 import 'package:doctor_app/utils/colors/colors.dart';
 import 'package:doctor_app/view/Admin/view_model/dropdown.dart';
 import 'package:doctor_app/view/User/widgets/ReUse/widgets.dart';
 import 'package:doctor_app/view_model/addDcProvider.dart';
+import 'package:doctor_app/view_model/imagepicker.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
+// ignore: must_be_immutable
 class AdddoctorInAdmin extends StatelessWidget {
   AdddoctorInAdmin({super.key});
   TextEditingController nameOfdoctor = TextEditingController();
   TextEditingController specilalist = TextEditingController();
   TextEditingController experience = TextEditingController();
   TextEditingController patients = TextEditingController();
+  TextEditingController about = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +26,9 @@ class AdddoctorInAdmin extends StatelessWidget {
       backgroundColor: ColorsConstents.backGroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Consumer2<DropdownAdmin, Adddcprovider>(
-            builder: (context, value, addDoctor, child) => Column(
+          child: Consumer3<DropdownAdmin, Adddcprovider, ImageControllerss>(
+            builder: (context, value, addDoctor, imageProviders, child) =>
+                Column(
               spacing: 30,
               children: [
                 Stack(
@@ -36,12 +43,28 @@ class AdddoctorInAdmin extends StatelessWidget {
                       bottom: -40,
                       left: 0,
                       right: 0,
-                      child: CircleAvatar(
-                        radius: 60,
-                        backgroundColor: Colors.white,
+                      child: GestureDetector(
+                        onTap: () => imageProviders.pickImage(),
                         child: CircleAvatar(
-                          radius: 55,
-                          backgroundColor: ColorsConstents.buttonColors,
+                          radius: 60,
+                          backgroundColor: Colors.white,
+                          child: CircleAvatar(
+                            radius: 55,
+                            backgroundColor: ColorsConstents.buttonColors,
+                            child: imageProviders.imageFile != null
+                                ? ClipOval(
+                                    child: Image(
+                                      image:
+                                          FileImage(imageProviders.imageFile!),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  )
+                                : Icon(
+                                    Icons.person,
+                                    size: 40,
+                                    color: Colors.white,
+                                  ),
+                          ),
                         ),
                       ),
                     ),
@@ -93,17 +116,23 @@ class AdddoctorInAdmin extends StatelessWidget {
                           contr: patients,
                           labeltext: 'Patients',
                           kebordtype: TextInputType.number),
+                      textFieldsAddDoctor(
+                          max: 3, contr: about, labeltext: 'About'),
                       eleButuonFoR(
                           voids: () {
                             final save = AdddoctorsModel(
+                                images: imageProviders.imageFile?.path,
+                                about: about.text,
                                 categeries: value.selectedCategory,
                                 doctorExperiance: experience.text,
                                 doctorName: nameOfdoctor.text,
                                 doctorPatinents: patients.text,
                                 doctorSpecilist: specilalist.text);
+                            log('imgesPath -${imageProviders.imageFile}');
                             addDoctor.addData(save);
                           },
-                          text: 'Add')
+                          text: 'Add'),
+                      Gap(30)
                     ],
                   ),
                 )
@@ -119,8 +148,10 @@ class AdddoctorInAdmin extends StatelessWidget {
 Widget textFieldsAddDoctor(
     {required String labeltext,
     TextInputType? kebordtype,
+    int? max,
     TextEditingController? contr}) {
   return TextField(
+    maxLines: max,
     controller: contr,
     keyboardType: kebordtype,
     decoration:

@@ -47,6 +47,9 @@ dependencies:
   fl_chart: ^0.70.0
   intl: ^0.20.1
   flutter_datetime_picker: ^1.5.1
+  supabase_flutter: ^2.8.3
+  image_picker: ^1.1.2
+  lottie: ^3.3.1
 
 dev_dependencies:
   flutter_test:

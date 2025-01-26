@@ -5,7 +5,9 @@ class AdddoctorsModel {
   String? doctorPatinents;
   String? categeries;
   String? images;
+  String? about;
   AdddoctorsModel({
+    required this.about,
     required this.categeries,
     required this.doctorExperiance,
     required this.doctorName,
@@ -16,6 +18,7 @@ class AdddoctorsModel {
 
   factory AdddoctorsModel.fromFireStore(Map<String, dynamic> firestore) {
     return AdddoctorsModel(
+        about: firestore['about'],
         categeries: firestore['categeries'],
         doctorExperiance: firestore['doctorExperiance'],
         doctorName: firestore['doctorName'],
@@ -31,7 +34,8 @@ class AdddoctorsModel {
       "doctorExperiance": doctorExperiance,
       "doctorPatinents": doctorPatinents,
       "images": images,
-      "categeries": categeries
+      "categeries": categeries,
+      "about": about
     };
   }
 }

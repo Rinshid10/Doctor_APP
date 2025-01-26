@@ -78,3 +78,21 @@ Widget eleButuonForAppoient({required text, required VoidCallback callback}) {
           fontwight: FontWeight.bold,
           colors: ColorsConstents.textWhiteColor));
 }
+
+Widget textfeildInAlerDilog(
+    {required String text, required TextEditingController controller}) {
+  return TextField(
+    controller: controller,
+    style: TextStyle(color: Colors.black),
+    decoration: InputDecoration(
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      hintText: text,
+      hintStyle: TextStyle(
+        color: Colors.black.withAlpha(100),
+        fontSize: 16,
+      ),
+    ),
+  );
+}
