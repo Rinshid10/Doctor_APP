@@ -1,7 +1,5 @@
 import 'dart:async';
-
 import 'package:doctor_app/utils/colors/colors.dart';
-import 'package:doctor_app/view/User/HomePage/homepage.dart';
 import 'package:doctor_app/view/User/bottomNavigationbar/bottombar.dart';
 import 'package:doctor_app/view/User/loginAndSignUP/LoginPage/loginpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,11 +14,11 @@ class Splashscreen extends StatefulWidget {
 
 class _SplashscreenState extends State<Splashscreen> {
   @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   Timer(Duration(seconds: 4), () => cheackuserLoginOrNot());
-  // }
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer(Duration(seconds: 4), () => cheackuserLoginOrNot());
+  }
 
   @override
   Widget build(BuildContext context) {

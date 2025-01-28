@@ -69,10 +69,9 @@ Widget containerGoogle() {
       children: [
         Container(
           height: double.infinity,
-          width: 50,
-          color: Colors.red,
+          width: 70,
+          child: Image(image: AssetImage('asset/fgfgffgfg.png')),
         ),
-        Gap(15),
         textDemo(
             text: 'Sign with Google', fontsized: 18, fontwight: FontWeight.bold)
       ],
