@@ -3,8 +3,11 @@ import 'package:doctor_app/view/Admin/AddDoctor/adddoctor.dart';
 import 'package:doctor_app/view/Admin/AdminHomepage/adminhomepage.dart';
 import 'package:doctor_app/view/Admin/view_model/dropdown.dart';
 import 'package:doctor_app/view/Admin/view_model/userdetailsprovider.dart';
+import 'package:doctor_app/view/User/AdminOrUser/adminoruser.dart';
 import 'package:doctor_app/view/User/DoctorPage/doctorpage.dart';
+import 'package:doctor_app/view/User/SplashScreen/splashscreen.dart';
 import 'package:doctor_app/view/User/ViewDoctor/doctorviewpage.dart';
+import 'package:doctor_app/view/User/bottomNavigationbar/bottombar.dart';
 
 import 'package:doctor_app/view_model/addDcProvider.dart';
 import 'package:doctor_app/view_model/adminlogin.dart';
@@ -66,7 +69,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        home: Doctorpage(),
+        home: Adminoruser(),
       ),
     );
   }

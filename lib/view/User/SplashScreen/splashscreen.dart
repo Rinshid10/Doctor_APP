@@ -15,11 +15,11 @@ class Splashscreen extends StatefulWidget {
 }
 
 class _SplashscreenState extends State<Splashscreen> {
-  // @override
+  @override
   // void initState() {
   //   // TODO: implement initState
   //   super.initState();
-  //   Timer(Duration(seconds: 3), () => cheackuserLoginOrNot());
+  //   Timer(Duration(seconds: 4), () => cheackuserLoginOrNot());
   // }
 
   @override
@@ -27,12 +27,17 @@ class _SplashscreenState extends State<Splashscreen> {
     return Scaffold(
       backgroundColor: ColorsConstents.backGroundColor,
       body: Center(
-        child: SizedBox(
-          height: 300,
-          width: 300,
-          child: Image(
-            image: AssetImage('asset/baground-removebg-preview.png'),
-            fit: BoxFit.cover,
+        child: TweenAnimationBuilder<double>(
+          duration: Duration(seconds: 1),
+          tween: Tween(begin: 200, end: 150),
+          builder: (context, value, child) => AnimatedContainer(
+            duration: Duration(seconds: 2),
+            height: value,
+            width: value,
+            child: Image(
+              image: AssetImage('asset/baground-removebg-preview.png'),
+              fit: BoxFit.cover,
+            ),
           ),
         ),
       ),

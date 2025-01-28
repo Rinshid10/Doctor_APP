@@ -1,17 +1,23 @@
-import 'dart:io';
-
 import 'package:doctor_app/model/AddDoctors/adddoctors.dart';
-import 'package:doctor_app/utils/colors/colors.dart';
 import 'package:doctor_app/view/User/ViewDoctor/doctorviewpage.dart';
 import 'package:doctor_app/view/User/widgets/ReUse/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 
 Widget doctorContainerSInViewPage(
     {required AdddoctorsModel data, required BuildContext context}) {
   return GestureDetector(
     onTap: () => Navigator.push(
-        context, MaterialPageRoute(builder: (context) => Doctorviewpage())),
+        context,
+        MaterialPageRoute(
+            builder: (context) => Doctorviewpage(
+                  image: data.images,
+                  about: data.about,
+                  cat: data.categeries,
+                  exp: data.doctorExperiance,
+                  name: data.doctorName,
+                  qali: data.doctorSpecilist,
+                  pat: data.doctorPatinents,
+                ))),
     child: Container(
       height: 170,
       width: 170,
@@ -75,10 +81,12 @@ Widget doctorContainerSInViewPage(
                 padding: const EdgeInsets.only(top: 20, bottom: 20, right: 10),
                 child: SizedBox(
                     height: double.infinity,
-                    width: 100,
-                    child: Image(
-                      image: FileImage(File(data.images!)),
-                    ))),
+                    width: 70,
+                    child: data.images != null
+                        ? Image(
+                            image: NetworkImage(data.images!),
+                          )
+                        : Icon(Icons.photo_album))),
           ],
         ),
       ),

@@ -2,7 +2,9 @@ import 'dart:developer';
 
 import 'package:doctor_app/model/authmodel/auth.dart';
 import 'package:doctor_app/services/UserServices/Authentication/firebaseauthentication.dart';
+import 'package:doctor_app/services/UserServices/Authentication/supabaseauth.dart';
 import 'package:doctor_app/view/User/bottomNavigationbar/bottombar.dart';
+import 'package:doctor_app/view/User/loginAndSignUP/LoginPage/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -12,6 +14,9 @@ class Authenticationpovider extends ChangeNotifier {
   TextEditingController password = TextEditingController();
   TextEditingController username = TextEditingController();
   TextEditingController phonenumber = TextEditingController();
+
+  Loginservices supLogin = Loginservices();
+
   String usernameOFuser = '';
   List<bool> isveryfied = [];
   List<bool> isNotVeryfied = [];
@@ -23,6 +28,24 @@ class Authenticationpovider extends ChangeNotifier {
       log(' length of isnotverified ${isNotVeryfied.length}  length of isVerified ${isveryfied.length}');
     } catch (e) {
       log('$e');
+    }
+  }
+
+  supBaseRegister() async {
+    try {
+      await supLogin.register(password.text, email.text);
+      log('Supbse register succes');
+    } catch (e) {
+      log('error inn supabase register $e');
+    }
+  }
+
+  loginSupaBase(email, password) async {
+    try {
+      await supLogin.login(password, email);
+      log('Supbse login succes');
+    } catch (e) {
+      log('error in supabase register');
     }
   }
 

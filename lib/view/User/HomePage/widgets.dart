@@ -31,26 +31,37 @@ List carosil = [
   carosilContainer(colors: Colors.amber),
   carosilContainer(colors: Colors.black12),
 ];
-Widget categoriesContainer({required String name, required String image}) {
-  return Container(
-    height: 100,
-    width: 100,
-    decoration: BoxDecoration(
-        color: ColorsConstents.witeColor,
-        borderRadius: BorderRadius.circular(10)),
-    child: Column(
-      children: [
-        SizedBox(
-          child: Container(
-            margin: EdgeInsets.only(top: 15),
-            height: 40,
-            width: 60,
-            child: Image(image: AssetImage(image)),
-          ),
+Widget categoriesContainer(
+    {required String name, required String image, VoidCallback? callback}) {
+  return Card(
+    elevation: 1,
+    child: GestureDetector(
+      onTap: callback,
+      child: Container(
+        height: 100,
+        width: 100,
+        decoration: BoxDecoration(
+            color: ColorsConstents.witeColor,
+            borderRadius: BorderRadius.circular(10)),
+        child: Column(
+          children: [
+            SizedBox(
+              child: Container(
+                margin: EdgeInsets.only(top: 15),
+                height: 50,
+                width: 60,
+                child: Image(image: AssetImage(image)),
+              ),
+            ),
+            Gap(5),
+            textDemo(
+                text: name,
+                fontwight: FontWeight.bold,
+                colors: Colors.black,
+                fontsized: 13)
+          ],
         ),
-        Gap(5),
-        textDemo(text: name, fontwight: FontWeight.bold, colors: Colors.black)
-      ],
+      ),
     ),
   );
 }

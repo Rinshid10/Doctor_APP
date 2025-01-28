@@ -2,12 +2,27 @@ import 'package:doctor_app/utils/colors/colors.dart';
 import 'package:doctor_app/view/User/AppoimentRetister/appoinmentRegester.dart';
 import 'package:doctor_app/view/User/ViewDoctor/widget.dart';
 import 'package:doctor_app/view/User/widgets/ReUse/widgets.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class Doctorviewpage extends StatelessWidget {
-  const Doctorviewpage({super.key});
+  String? name;
+  String? cat;
+  var image;
+  String? qali;
+  String? about;
+  String? exp;
+  String? pat;
+  Doctorviewpage({
+    super.key,
+    required this.about,
+    required this.cat,
+    required this.exp,
+    required this.name,
+    required this.qali,
+    required this.image,
+    required this.pat,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +31,7 @@ class Doctorviewpage extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: textDemo(
-            text: 'Dr.Rihan kuttiparamban',
-            fontwight: FontWeight.bold,
-            fontsized: 20),
+            text: name ?? 'no name', fontwight: FontWeight.bold, fontsized: 20),
         backgroundColor: ColorsConstents.textWhiteColor,
       ),
       body: SingleChildScrollView(
@@ -29,29 +42,11 @@ class Doctorviewpage extends StatelessWidget {
             children: [
               SizedBox(
                 height: 300,
-                child: Center(
-                    child: Image(image: AssetImage('asset/doctor_image.png'))),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  rowContainer(
-                      text: 'Voice Call',
-                      icons: Icons.phone,
-                      colors: Colors.blue),
-                  rowContainer(
-                      text: 'Video Call',
-                      icons: Icons.video_call,
-                      colors: const Color.fromARGB(255, 113, 129, 248)),
-                  rowContainer(
-                      text: 'Message',
-                      icons: Icons.message,
-                      colors: const Color.fromARGB(255, 243, 175, 74)),
-                ],
+                child: Center(child: Image.network(image)),
               ),
               Gap(15),
               textDemo(
-                  text: 'Medicine & Heart Spelist',
+                  text: qali ?? 'no qa',
                   fontwight: FontWeight.bold,
                   fontsized: 18),
               textDemo(
@@ -71,24 +66,21 @@ class Doctorviewpage extends StatelessWidget {
               ),
               Gap(20),
               textDemo(
-                  text: 'About Rihan',
+                  text: 'About $name',
                   fontwight: FontWeight.bold,
                   colors: Colors.black87,
                   fontsized: 18),
-              textDemo(
-                  text:
-                      'pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp',
-                  colors: Colors.black87),
+              textDemo(text: about ?? 'no ', colors: Colors.black87),
               Gap(20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  columnText(name: 'Patients', num: '1.08k'),
-                  columnText(name: 'Experience', num: '8 Years'),
+                  columnText(name: 'Patients', num: '${pat}k'),
+                  columnText(name: 'Experience', num: '$exp Years'),
                   columnText(name: 'Reviews', num: '2.05k'),
                 ],
               ),
-              Gap(35),
+              Gap(50),
               eleButuonForView(
                 callbaack: () => Navigator.push(
                     context,

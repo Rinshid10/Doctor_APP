@@ -70,12 +70,13 @@ class Loginpage extends StatelessWidget {
                               colors: ColorsConstents.buttonColors)),
                       Hero(
                         tag: "Login",
-                        child: eleButuonForLR(
-                          voidfuc: () => value.login(
+                        child: eleButuonForLR(voidfuc: () {
+                          value.loginSupaBase(email.text, password.text);
+                          value.login(
                               context: context,
                               emails: email.text,
-                              password: password.text),
-                        ),
+                              password: password.text);
+                        }),
                       )
                     ],
                   )

@@ -73,6 +73,7 @@ class Registerpage extends StatelessWidget {
                                 text: 'Register',
                                 voids: () {
                                   value.register(context);
+                                  value.supBaseRegister();
                                 }),
                           ),
                           Gap(10),

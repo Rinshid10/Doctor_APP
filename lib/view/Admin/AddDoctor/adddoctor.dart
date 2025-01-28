@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:doctor_app/model/AddDoctors/adddoctors.dart';
 import 'package:doctor_app/utils/colors/colors.dart';
 import 'package:doctor_app/view/Admin/view_model/dropdown.dart';
@@ -11,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
-// ignore: must_be_immutable
 class AdddoctorInAdmin extends StatelessWidget {
   AdddoctorInAdmin({super.key});
   TextEditingController nameOfdoctor = TextEditingController();
@@ -19,7 +17,6 @@ class AdddoctorInAdmin extends StatelessWidget {
   TextEditingController experience = TextEditingController();
   TextEditingController patients = TextEditingController();
   TextEditingController about = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,34 +37,31 @@ class AdddoctorInAdmin extends StatelessWidget {
                       color: ColorsConstents.buttonColors,
                     ),
                     Positioned(
-                      bottom: -40,
-                      left: 0,
-                      right: 0,
-                      child: GestureDetector(
-                        onTap: () => imageProviders.pickImage(),
-                        child: CircleAvatar(
-                          radius: 60,
-                          backgroundColor: Colors.white,
-                          child: CircleAvatar(
-                            radius: 55,
-                            backgroundColor: ColorsConstents.buttonColors,
-                            child: imageProviders.imageFile != null
-                                ? ClipOval(
-                                    child: Image(
-                                      image:
-                                          FileImage(imageProviders.imageFile!),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  )
-                                : Icon(
-                                    Icons.person,
-                                    size: 40,
-                                    color: Colors.white,
-                                  ),
-                          ),
-                        ),
-                      ),
-                    ),
+                        bottom: -40,
+                        left: 0,
+                        right: 0,
+                        child: GestureDetector(
+                            onTap: () => imageProviders.pickImage(),
+                            child: CircleAvatar(
+                              radius: 60,
+                              backgroundColor: Colors.white,
+                              child: CircleAvatar(
+                                  radius: 55,
+                                  backgroundColor: ColorsConstents.buttonColors,
+                                  child: imageProviders.imageFile != null
+                                      ? ClipOval(
+                                          child: Image(
+                                            image: FileImage(
+                                                imageProviders.imageFile!),
+                                            fit: BoxFit.cover,
+                                          ),
+                                        )
+                                      : Icon(
+                                          Icons.person,
+                                          size: 40,
+                                          color: Colors.white,
+                                        )),
+                            ))),
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: IconButton(
@@ -93,21 +87,18 @@ class AdddoctorInAdmin extends StatelessWidget {
                       textFieldsAddDoctor(
                           labeltext: 'Specialist in', contr: specilalist),
                       DropdownButtonFormField<String>(
-                        value: value.selectedCategory,
-                        decoration: InputDecoration(
-                            labelText: 'Categories',
-                            border: OutlineInputBorder()),
-                        onChanged: (String? newValue) {
-                          value.changeValue(newValue);
-                        },
-                        items: value.categories
-                            .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                      ),
+                          value: value.selectedCategory,
+                          decoration: InputDecoration(
+                              labelText: 'Categories',
+                              border: OutlineInputBorder()),
+                          onChanged: (String? newValue) {
+                            value.changeValue(newValue);
+                          },
+                          items: value.categories
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                                value: value, child: Text(value));
+                          }).toList()),
                       textFieldsAddDoctor(
                           contr: experience,
                           labeltext: 'Experiance',
@@ -120,19 +111,21 @@ class AdddoctorInAdmin extends StatelessWidget {
                           max: 3, contr: about, labeltext: 'About'),
                       eleButuonFoR(
                           voids: () {
+                            imageProviders
+                                .uplodImage(imageProviders.imageFile!);
+
                             final save = AdddoctorsModel(
-                                images: imageProviders.imageFile?.path,
+                                images: imageProviders.data,
                                 about: about.text,
                                 categeries: value.selectedCategory,
                                 doctorExperiance: experience.text,
                                 doctorName: nameOfdoctor.text,
                                 doctorPatinents: patients.text,
                                 doctorSpecilist: specilalist.text);
-                            log('imgesPath -${imageProviders.imageFile}');
                             addDoctor.addData(save);
                           },
                           text: 'Add'),
-                      Gap(30)
+                      Gap(30),
                     ],
                   ),
                 )

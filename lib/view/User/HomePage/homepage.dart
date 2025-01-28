@@ -54,16 +54,16 @@ class Homepage extends StatelessWidget {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  spacing: 20,
+                  spacing: 10,
                   children: [
                     categoriesContainer(
-                        image: 'asset/Medicin_icon.jpg', name: 'Pediatrician'),
+                        image: 'asset/baby.png', name: 'Pediatrician'),
                     categoriesContainer(
-                        image: 'asset/Medicin_icon.jpg', name: 'Pediatrician'),
+                        image: 'asset/cardio.jpg', name: 'Cardiologist'),
                     categoriesContainer(
-                        image: 'asset/Medicin_icon.jpg', name: 'Pediatrician'),
+                        image: 'asset/phy.png', name: 'Psychiatrist'),
                     categoriesContainer(
-                        image: 'asset/Medicin_icon.jpg', name: 'Pediatrician'),
+                        image: 'asset/brain.png', name: 'Neurosurgeon'),
                   ],
                 ),
               ),
