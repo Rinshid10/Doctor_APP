@@ -1,7 +1,7 @@
 import 'package:doctor_app/constents/Links%20Constants/supabaseconstants.dart';
 import 'package:doctor_app/view/Admin/view_model/dropdown.dart';
 import 'package:doctor_app/view/Admin/view_model/userdetailsprovider.dart';
-import 'package:doctor_app/view/User/HomePage/homepage.dart';
+import 'package:doctor_app/view/User/SplashScreen/splashscreen.dart';
 import 'package:doctor_app/view_model/addDcProvider.dart';
 import 'package:doctor_app/view_model/adminlogin.dart';
 import 'package:doctor_app/view_model/appoiment.dart';
@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Homepage(),
+        home: Splashscreen(),
       ),
     );
   }

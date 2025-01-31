@@ -21,6 +21,7 @@ class AdddoctorsModel {
         about: firestore['about'],
         categeries: firestore['categeries'],
         doctorExperiance: firestore['doctorExperiance'],
+        
         doctorName: firestore['doctorName'],
         doctorPatinents: firestore['doctorPatinents'],
         doctorSpecilist: firestore['doctorSpecilist'],

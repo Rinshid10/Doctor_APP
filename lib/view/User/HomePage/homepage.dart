@@ -19,7 +19,7 @@ class Homepage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              textDemo(
+              textDemo(   
                   text: 'Find Your', fontsized: 15, fontwight: FontWeight.bold),
               Row(
                 children: [

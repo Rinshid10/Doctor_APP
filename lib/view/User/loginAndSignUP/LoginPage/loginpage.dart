@@ -9,9 +9,12 @@ import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
+
 class Loginpage extends StatelessWidget {
   Loginpage({super.key});
+
   TextEditingController email = TextEditingController();
+
   TextEditingController password = TextEditingController();
 
   @override
@@ -72,6 +75,7 @@ class Loginpage extends StatelessWidget {
                         tag: "Login",
                         child: eleButuonForLR(voidfuc: () {
                           value.loginSupaBase(email.text, password.text);
+
                           value.login(
                               context: context,
                               emails: email.text,
